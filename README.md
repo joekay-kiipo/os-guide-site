@@ -1,43 +1,80 @@
-# Designing Inclusive Digital Solutions — web edition
+# Designing Inclusive Digital Solutions
 
-The interactive web version of **Designing Inclusive Digital Solutions: An Open-Source UI/UX Guide for Designing Context-Aware and Gender-Responsive Digital Solutions in Ghana** (First Edition, 2026), published by GIZ under the Digital Transformation for Inclusive Entrepreneurship in Ghana (DTEG) programme and implemented by GFA Consulting Group GmbH.
+An open-source UI/UX guide for context-aware and gender-responsive digital products,
+written from three years of field testing with informal micro-entrepreneurs across six
+regions of Ghana.
 
-This site is built from the same Markdown source used for the designed PDF edition, so the web and print versions stay in sync as long as both are rebuilt from that source.
+This is the code implementation of the **Designing Inclusive Digital Solutions** design
+canvas (claude.ai/design project *OS Documentation Design Guidelines*).
 
-## What's included
+## Running it
 
-- The full guide: Home (About This Guide, How to Use This Document, Key Findings at a Glance, Quick Start), Sections 1–9, References.
-- Front matter matching the PDF: Imprint (authors, licence, copyright, citation), Acknowledgements, and Disclaimer.
-- The eleven figures from the designed edition, extracted at print resolution.
-- Custom brand styling matched to the guide's blue/green/amber palette, with a light/dark mode toggle.
-- All callouts (tips, common mistakes, field observations) as native Material admonitions.
-- Full-text search across the whole guide.
-
-## Interactive components
-
-Section 1.3 carries two live components, built in vanilla JS with no external libraries (`docs/javascripts/dteg-data.js` and `dteg-interactive.js`):
-
-- **Regional locator** — an interactive version of the north-to-south regional schematic (Upper West → Upper East → North East → Northern → Ashanti → Eastern, with Greater Accra as a secondary site). Click a region to see its intermediary/solution count and filter the table below to it. Greater Accra has no dedicated solution rows in the data, so clicking it surfaces an explanatory note rather than a fake empty result.
-- **Solutions explorer** — all 30 solutions (S1–S18, P1–P12) in a searchable, filterable, sortable table: free-text search, region/phase/evidence-level dropdowns, a "Finalists only" toggle, and click-to-sort column headers (natural sort on codes, so S2 sorts before S10). Roster-only, discontinued, and finalist solutions carry their own badges.
-
-Both read from the same 30-row dataset transcribed from Section 1.3. If the counts in the guide change, update `dteg-data.js` to match. The mount points are the two empty `<div>` elements in `docs/01-introduction.md`.
-
-## Licence status
-
-Resolved. The guide is published under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), with GIZ and GFA Consulting Group GmbH holding copyright. Photographs, logos, and third-party figures are excluded from the licence. Full terms are in [Imprint](docs/imprint.md) and Section 9.5.
-
-## Running it locally
-
-Requires Python 3 with `mkdocs` and `mkdocs-material`:
+Every page is rendered from the Markdown in `docs/`, fetched over HTTP — so the site
+needs to be served, not opened from the filesystem.
 
 ```bash
-pip install mkdocs mkdocs-material
-mkdocs serve   # preview at http://127.0.0.1:8000
-mkdocs build   # static HTML into ./site/
+python3 -m http.server 8000
 ```
 
-The built `site/` folder is fully static and can be hosted on the GHN website, GitHub Pages, Netlify, or any standard web host with no server-side dependencies. This repository deploys to GitHub Pages automatically on every push to `main` (see `.github/workflows/`).
+Then open <http://localhost:8000>.
 
-## Source of truth
+Any static host works for deployment (GitHub Pages, Netlify, S3): there is no build step
+and no server-side code.
 
-The Markdown source lives in `docs/`. Edits to guide content should happen there and be propagated to the PDF/docx edition, so the two do not drift.
+## Layout
+
+```
+index.html          page shell — header, layout containers, theme bootstrap
+assets/app.css      design tokens and all component styles
+assets/app.js       router, Markdown parser/renderer, search index, UI
+docs/*.md           the guide content (source of truth)
+docs/assets/        figures and field photographs
+```
+
+`docs/` is copied from the MkDocs site (`OS Guide Site`) and keeps the same file names,
+so content edits stay portable between the two.
+
+## How it works
+
+- **No dependencies, no build.** Plain ES5-era JavaScript and a ~30-line DOM helper.
+  Google Fonts (Outfit for titles, DM Sans for body/UI, Geist Mono for the small
+  technical labels) and Phosphor Icons load from CDN.
+- **Markdown at runtime.** `parseDoc()` handles the subset the guide uses: headings with
+  optional `{: #anchor }` ids, paragraphs, lists, tables, blockquotes, figures, and
+  MkDocs-style `!!! tip` / `!!! quote` / `!!! warning` admonitions, which map to the three
+  tinted box colours in the legend.
+- **Cross-references are live.** Prose like "Section 4" or "Sections 6.5 and 6.6" is
+  turned into working links, including sub-section numbers that scroll to the right
+  heading.
+- **Search** (⌘K / Ctrl-K) indexes every heading and paragraph of every Markdown file on
+  load, plus the overview's own sections. Arrow keys navigate, Enter opens.
+- **Theme** defaults to dark and persists to `localStorage` under `ids-docs-theme`.
+
+## Where this departs from the design canvas
+
+The canvas is a static mockup, so a few things had to be decided in code. All of them are
+additive — nothing in the design was dropped.
+
+| | Design canvas | Here |
+|---|---|---|
+| Routing | in-memory `pageId` | hash routes (`#/s4`, `#/s4/4-2`) so pages are linkable and the back button works |
+| Figures | `<image-slot>` placeholders | the real figures from `docs/assets/`, at their natural aspect ratio rather than a fixed 300px box |
+| Home hero | heading + a separate rounded photo card + a stats grid | one full-bleed photo hero: `field-shop-couple.jpg` behind a dark gradient, with the kicker, heading, lede, actions and stat strip overlaid on it |
+| Home layout | left sidebar beside every page, including home | on **home only**, the hero spans the full page width and the nav menu drops to a left column beneath it; inner pages keep the sidebar beside the content. Driven by a `.is-home` body class; the same nav markup renders in both places (`buildNavGroups`) |
+| CTA photo | empty image slot | `field-market-phone.jpg`, as used on the existing site |
+| Primary hero button | near-black `--inv`, indigo on hover | green (`--heroGreen`, `#3d9c53`) to match the reference; swap to `var(--accent)` for the indigo brand colour |
+| Checklist drawer | drawer only | drawer plus the scrim the design defined but never rendered |
+| "Imprint and licence" button | no action | opens the Imprint page |
+| GitHub / Contribute | `href="#"` | repository link and Section 9 |
+| Page rail | h2 headings only | h2s plus indented h3s — Sections 4 and 6 keep most of their structure at h3, which left a two-item rail on a very long page |
+| Breakpoints | desktop only | sidebar collapses to an off-canvas drawer under 1100px; the "On this page" rail hides under 1280px |
+| Failed fetch | silent | an inline notice explaining the page needs to be served over HTTP |
+
+The "On this page" rail is hidden on the overview, as the design specifies. Pages with
+no `##`/`###` headings (Disclaimer, Acknowledgements) hide it too.
+
+## Licence
+
+© 2026 GIZ GmbH and GFA Consulting Group GmbH. Licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Photographs, logos and
+third-party figures excluded.

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designing Inclusive Digital Solutions</title>
+<meta name="description" content="An open-source UI/UX guide for context-aware and gender-responsive digital products, written from three years of field testing with informal micro-entrepreneurs across six regions of Ghana.">
+<script>
+  (function () {
+    try {
+      document.documentElement.setAttribute('data-theme', localStorage.getItem('ids-docs-theme') || 'light');
+    } catch (e) {}
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="assets/app.css?v=20">
+</head>
+<body>
+
+<header class="hdr">
+  <button class="hdr-menu" id="menu-btn" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+    <i class="ph ph-list" aria-hidden="true"></i>
+  </button>
+
+  <a class="hdr-brand" href="#/home">
+    <span class="hdr-mark"><i class="ph-fill ph-circle-half-tilt" aria-hidden="true"></i></span>
+    <span class="hdr-name">Inclusive Digital Solutions</span>
+    <span class="hdr-rule" aria-hidden="true"></span>
+    <span class="hdr-kicker">Docs</span>
+  </a>
+
+  <div class="hdr-searchwrap">
+    <button class="hdr-search" id="search-btn" aria-label="Search the guide">
+      <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+      <span class="hdr-search-label">Search the guide&hellip;</span>
+      <span class="kbd">&#8984;K</span>
+    </button>
+  </div>
+
+  <div class="hdr-actions">
+    <!-- Repository link: update if this site moves to its own repo. -->
+    <a class="icon-btn" id="repo-link" href="https://github.com/joekay-kiipo/os-guide-site" target="_blank" rel="noreferrer" aria-label="GitHub repository">
+      <i class="ph-fill ph-github-logo" aria-hidden="true"></i>
+    </a>
+    <button class="icon-btn" id="theme-btn" aria-label="Toggle colour theme">
+      <i class="ph ph-moon" aria-hidden="true"></i>
+    </button>
+    <a class="btn-accent hdr-cta" href="#/s9">Contribute</a>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="nav-scrim" id="nav-scrim" hidden></div>
+  <nav class="sidebar" id="sidebar" aria-label="Guide navigation"></nav>
+  <main class="main" id="main" tabindex="-1"></main>
+  <aside class="rail" id="rail" aria-label="On this page"></aside>
+</div>
+
+<div class="drawer-scrim" id="drawer-scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Before you start" aria-hidden="true"></aside>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search" hidden></div>
+
+<noscript>
+  <div class="noscript">
+    <h1>Designing Inclusive Digital Solutions</h1>
+    <p>This guide renders its Markdown sources in the browser, so JavaScript needs to be enabled. The full text is also readable directly in the
+    <a href="docs/01-introduction.md">docs folder</a>.</p>
+  </div>
+</noscript>
+
+<script src="assets/app.js?v=17"></script>
+</body>
+</html>

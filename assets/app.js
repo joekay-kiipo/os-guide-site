@@ -1228,12 +1228,14 @@
     $('#sidebar').classList.add('is-open');
     $('#nav-scrim').hidden = false;
     $('#menu-btn').setAttribute('aria-expanded', 'true');
+    $('#menu-btn').setAttribute('aria-label', 'Close navigation');
   }
 
   function closeNavDrawer() {
     $('#sidebar').classList.remove('is-open');
     $('#nav-scrim').hidden = true;
     $('#menu-btn').setAttribute('aria-expanded', 'false');
+    $('#menu-btn').setAttribute('aria-label', 'Open navigation');
   }
 
   /* ----------------------------------------------------------------- theme */

@@ -144,9 +144,9 @@ h1, h2, h3, h4,
   display: none;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  margin-left: -6px;
+  width: 34px;
+  height: 34px;
+  margin: 0;
   border: none;
   border-radius: 8px;
   background: none;
@@ -379,6 +379,7 @@ h1, h2, h3, h4,
   z-index: 39;
   background: rgba(0, 0, 0, 0.45);
 }
+.nav-scrim[hidden] { display: none; }
 
 /* -------------------------------------------------------------- home page */
 
@@ -1472,14 +1473,14 @@ h1, h2, h3, h4,
     transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
   }
   .sidebar.is-open { transform: translateX(0); }
-  .nav-scrim { display: block; }
+  .nav-scrim:not([hidden]) { display: block; }
 
   .main { padding: 36px 24px 72px; }
   .hero-full { margin: -36px -24px 0; min-height: 560px; }
   .hero-full-content { padding: 48px var(--hero-inset) 32px; }
-  /* Home has its own inline menu below the hero, so the hamburger/off-canvas
-     sidebar is not used there. */
-  .is-home .hdr-menu { display: none; }
+  /* Keep the grouped guide navigation available from the header on mobile,
+     including the home page where the same links also appear below the hero. */
+  .is-home .sidebar { display: block; }
   .home-below { padding-bottom: 72px; gap: 32px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .stat, .stat:first-child { padding: 20px; }
@@ -1508,13 +1509,14 @@ h1, h2, h3, h4,
 
   .hero-full { min-height: 0; }
   .hero-full-content { padding: 40px var(--hero-inset) 28px; }
+  .hero-full .hero-full-title { font-size: clamp(46px, 8.5vw, 52px); }
   .hero-full-lede { font-size: 16px; }
   /* Let the boxed line wrap on narrow screens rather than overflow. */
   .hero-full-title .hero-nowrap { white-space: normal; }
 
-  /* Single column: menu stacks above the sections rather than beside them. */
+  /* The same grouped navigation is available from the mobile hamburger. */
   .home-below { grid-template-columns: 1fr; gap: 12px; padding-top: 44px; }
-  .home-nav { position: static; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .home-nav { display: none; }
   .hero-stats { grid-template-columns: 1fr 1fr; }
   .hero-stat { padding: 18px 20px; }
   .hero-stat + .hero-stat { border-left: none; }

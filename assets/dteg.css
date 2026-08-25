@@ -1,0 +1,279 @@
+/* ================================================================
+   Interactive regional locator + solutions explorer (Section 2.2)
+   ================================================================ */
+
+.dteg-region-caption {
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 0.75em;
+}
+
+.dteg-region-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  margin: 1em 0 1.5em;
+}
+
+.dteg-region-band {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.9em 1.2em;
+  background-color: var(--band-color, #1F6BA5);
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.dteg-region-band:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+}
+
+.dteg-region-band:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.dteg-region-band--active {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.dteg-region-band--secondary {
+  opacity: 0.85;
+  border: 2px dashed rgba(255, 255, 255, 0.6);
+}
+
+.dteg-region-band-title {
+  font-weight: 700;
+  font-size: 1.02em;
+}
+
+.dteg-region-band-meta {
+  font-size: 0.85em;
+  opacity: 0.92;
+  margin-top: 0.15em;
+}
+
+/* Explorer controls */
+
+.dteg-explorer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1em;
+  margin: 1em 0;
+  padding: 0.9em 1em;
+  border-radius: 0.5em;
+  background-color: var(--panel);
+}
+
+.dteg-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  font-size: 0.85em;
+}
+
+.dteg-control--search {
+  flex: 1 1 220px;
+}
+
+.dteg-control--checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4em;
+  flex: 0 0 100%;
+  align-self: flex-start;
+}
+
+.dteg-control-label {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.dteg-control input[type="text"],
+.dteg-control select {
+  font: inherit;
+  padding: 0.4em 0.6em;
+  border-radius: 0.35em;
+  border: 1px solid var(--border);
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.dteg-control input[type="checkbox"] {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+/* Table */
+
+.dteg-table-wrapper {
+  overflow-x: auto;
+  margin: 0.5em 0;
+}
+
+.dteg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88em;
+}
+
+.dteg-table th,
+.dteg-table td {
+  padding: 1em 0.7em;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.dteg-table th + th,
+.dteg-table td + td { border-left: 1px solid var(--border); }
+
+.dteg-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--bg);
+  border-bottom: 2px solid var(--accent);
+  white-space: nowrap;
+}
+
+.dteg-sort-btn {
+  font: inherit;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  padding: 0;
+}
+
+.dteg-sort-btn:hover {
+  color: var(--accent);
+}
+
+th.dteg-sort-asc .dteg-sort-btn::after {
+  content: " \25B2";
+  font-size: 0.75em;
+}
+
+th.dteg-sort-desc .dteg-sort-btn::after {
+  content: " \25BC";
+  font-size: 0.75em;
+}
+
+.dteg-code-cell {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dteg-insight-cell {
+  min-width: 220px;
+}
+
+.dteg-empty-state {
+  text-align: center;
+  padding: 1.5em;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.dteg-result-count {
+  font-size: 0.85em;
+  color: var(--muted);
+  margin-top: 0.4em;
+}
+
+/* Badges */
+
+.dteg-badge {
+  display: inline-block;
+  font-size: 0.78em;
+  font-weight: 600;
+  padding: 0.15em 0.55em;
+  border-radius: 1em;
+  margin: 0.1em 0.3em 0.1em 0;
+  white-space: nowrap;
+}
+
+.dteg-badge--phase1 {
+  background-color: #EFF6FF;
+  color: #144A73;
+}
+
+.dteg-badge--phase2 {
+  background-color: #EAF4EC;
+  color: #2E7D46;
+}
+
+.dteg-badge--full {
+  background-color: #EAF4EC;
+  color: #2E7D46;
+}
+
+.dteg-badge--roster {
+  background-color: #F1F1F1;
+  color: #555;
+}
+
+.dteg-badge--discontinued {
+  background-color: #FDEAEA;
+  color: #A33A3A;
+}
+
+.dteg-badge--finalist {
+  background-color: #FFF8EC;
+  color: #8A5A00;
+}
+
+/* Dark mode overrides */
+
+:root[data-theme="dark"] .dteg-explorer-controls {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="dark"] .dteg-table thead th {
+  background-color: var(--bg);
+}
+
+:root[data-theme="dark"] .dteg-badge--phase1 {
+  background-color: rgba(31, 107, 165, 0.25);
+  color: #9EC3E6;
+}
+
+:root[data-theme="dark"] .dteg-badge--phase2,
+:root[data-theme="dark"] .dteg-badge--full {
+  background-color: rgba(46, 125, 70, 0.25);
+  color: #8FD1A3;
+}
+
+:root[data-theme="dark"] .dteg-badge--roster {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ccc;
+}
+
+:root[data-theme="dark"] .dteg-badge--discontinued {
+  background-color: rgba(163, 58, 58, 0.25);
+  color: #ef9a9a;
+}
+
+:root[data-theme="dark"] .dteg-badge--finalist {
+  background-color: rgba(138, 90, 0, 0.3);
+  color: #ffcc80;
+}
+
+@media (max-width: 480px) {
+  .dteg-explorer-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .dteg-control--checkbox {
+    align-self: flex-start;
+  }
+}

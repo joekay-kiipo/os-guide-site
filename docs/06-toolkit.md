@@ -307,9 +307,7 @@ The templates in Sections 6.5 and 6.6 are reproduced below as fillable tables; c
 |---|---|---|---|---|
 | | | | | |
 | | | | | |
-| | | | | |
-| | | | | |
 
 ### External Template Galleries
 
-For teams that want a cloud-based, shareable version of these forms, the Nielsen Norman Group's [free UX templates and guides](https://www.nngroup.com/articles/free-ux-templates/){target="_blank" rel="noopener"} offer downloadable research plans, consent forms, interview guides, and usability-test moderation checklists that can be adapted for this context. The **Field Testing Guide** used across this project's own Phase 2 validation exercises (covering Assumption Framing, Problem Discovery, Solution/MVP Testing, and Business Model Testing, each with strong- and weak-signal indicators) is available as a companion document from the project team and is the most directly applicable structured template for any team continuing or replicating this project's field validation process.
+For teams that want a cloud-based, shareable version of these forms, the Nielsen Norman Group's [free UX templates and guides](https://www.nngroup.com/articles/free-ux-templates/) offer downloadable research plans, consent forms, interview guides, and usability-test moderation checklists that can be adapted for this context. The **Field Testing Guide** used across this project's own Phase 2 validation exercises (covering Assumption Framing, Problem Discovery, Solution/MVP Testing, and Business Model Testing, each with strong- and weak-signal indicators) is available as a companion document from the project team and is the most directly applicable structured template for any team continuing or replicating this project's field validation process.

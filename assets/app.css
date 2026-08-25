@@ -355,6 +355,9 @@ h1, h2, h3, h4,
 }
 .nav-item:hover { color: var(--text); }
 .nav-item.is-active { color: var(--accent); font-weight: 600; }
+.nav-download { color: var(--text); font-weight: 450; }
+.nav-download:hover { background: var(--activeBg); color: var(--accent); }
+.nav-group:last-child .nav-item:hover { background: var(--activeBg); color: var(--accent); }
 
 .nav-item i { font-size: 16px; line-height: 1; flex-shrink: 0; opacity: 0.75; }
 .nav-item span { line-height: 1.35; flex: 1; min-width: 0; }
@@ -410,6 +413,8 @@ h1, h2, h3, h4,
 .nav-sub span:last-child { line-height: 1.35; }
 :root[data-theme="light"] .nav-item:not(.is-active),
 :root[data-theme="light"] .nav-sub:not(.is-active) { color: #000000; }
+:root[data-theme="light"] .nav-item.nav-download { color: #000000; }
+:root[data-theme="light"] .nav-group:last-child .nav-item:hover { color: var(--accent); }
 :root[data-theme="light"] .nav-sub:not(.is-active):hover { color: var(--accent); }
 
 .nav-scrim {
@@ -1228,6 +1233,12 @@ h1, h2, h3, h4,
   border-radius: 5px;
 }
 .doc a { text-decoration: underline; text-underline-offset: 3px; }
+.doc strong > a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
 .doc a.xref { color: var(--accent); }
 
 .admon {

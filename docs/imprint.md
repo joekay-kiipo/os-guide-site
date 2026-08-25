@@ -37,4 +37,4 @@ Project documentation, GIZ Ghana and the Digital Transformation Center Ghana, 20
 
 ## How to cite this guide
 
-GIZ and GFA Consulting Group GmbH (2026). *Designing Inclusive Digital Solutions: An Open-Source UI/UX Guide for Designing Context-Aware and Gender-Responsive Digital Solutions in Ghana.* First Edition. Accra: Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH and GFA Consulting Group GmbH. Licensed under CC BY 4.0. Available at: [insert repository or download URL].
+GIZ and GFA Consulting Group GmbH (2026). *Designing Inclusive Digital Solutions: An Open-Source UI/UX Guide for Designing Context-Aware and Gender-Responsive Digital Solutions in Ghana.* First Edition. Accra: Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH and GFA Consulting Group GmbH. Licensed under CC BY 4.0. Available at: [https://github.com/joekay-kiipo/os-guide-site](https://github.com/joekay-kiipo/os-guide-site).

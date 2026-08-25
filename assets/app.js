@@ -302,7 +302,7 @@
 
   /* ----------------------------------------------------------- markdown i/o */
 
-  function docPath(file) { return 'docs/' + file + '?v=29'; }
+  function docPath(file) { return 'docs/' + file + '?v=31'; }
 
   function loadDoc(id) {
     var p = pageById(id);
@@ -841,7 +841,13 @@
           navButton(pageById('references'), 'References', 'ph ph-books'),
           navButton(pageById('acknowledgements'), 'Acknowledgements', 'ph ph-heart'),
           navButton(pageById('disclaimer'), 'Disclaimer', 'ph ph-shield-check'),
-          navButton(pageById('imprint'), 'Imprint', 'ph ph-file-text')))
+          navButton(pageById('imprint'), 'Imprint', 'ph ph-file-text'),
+          h('a', {
+            class: 'nav-item nav-download',
+            href: 'output/pdf/designing-inclusive-digital-solutions-guide.pdf',
+            target: '_blank',
+            rel: 'noreferrer'
+          }, icon('ph-duotone ph-file-pdf'), h('span', null, 'Download PDF'))))
     ];
   }
 

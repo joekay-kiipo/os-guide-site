@@ -1,0 +1,41 @@
+name: Volunteer as a maintainer
+description: Offer ongoing research, content, translation, accessibility, or technical stewardship.
+title: "Maintainer interest: "
+labels:
+  - maintainer-interest
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for offering to help sustain OS Guide. This issue is public, so share only professional information you are comfortable publishing.
+  - type: input
+    id: name
+    attributes:
+      label: Name or organization
+    validations:
+      required: true
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: Areas you could help with
+      options:
+        - label: Research and evidence review
+        - label: Writing and editing
+        - label: Translation or localization
+        - label: Accessibility review
+        - label: Website or repository maintenance
+        - label: Community coordination
+  - type: textarea
+    id: experience
+    attributes:
+      label: Relevant experience
+      description: Briefly describe your background and connection to the guide's subject.
+    validations:
+      required: true
+  - type: textarea
+    id: availability
+    attributes:
+      label: Availability and preferred contribution
+      description: Describe what you could realistically take responsibility for.
+    validations:
+      required: true

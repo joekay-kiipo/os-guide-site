@@ -302,7 +302,7 @@
 
   /* ----------------------------------------------------------- markdown i/o */
 
-  function docPath(file) { return 'docs/' + file; }
+  function docPath(file) { return 'docs/' + file + '?v=29'; }
 
   function loadDoc(id) {
     var p = pageById(id);
@@ -354,6 +354,9 @@
     }
     if (href.indexOf('http') === 0) {
       return h('a', { href: href, target: '_blank', rel: 'noreferrer' }, children);
+    }
+    if (href.indexOf('mailto:') === 0) {
+      return h('a', { href: href }, children);
     }
     return h('span', null, children);
   }
@@ -822,7 +825,7 @@
         type: 'button',
         'aria-current': act ? 'page' : null,
         onclick: function () { go('s' + sec.n); }
-      }, h('span', null, sec.title));
+      }, h('span', { class: 'num' }, String(sec.n)), h('span', null, sec.title));
     })) : null;
 
     return [
@@ -1008,7 +1011,7 @@
         h('p', null, 'Published under a Creative Commons Attribution 4.0 International (CC BY 4.0) licence. Photographs, logos, and third-party figures are excluded from the licence. ',
           linkSections('See the Imprint and Section 9.5 for full terms and attribution wording.')),
         h('div', { class: 'cta-actions' },
-          h('button', { class: 'btn-md btn-md--white', type: 'button', onclick: function () { go('s9'); } }, 'Contribute to the guide'),
+          h('button', { class: 'btn-md btn-md--white', type: 'button', onclick: function () { go('s9', '92-contribution-guidelines'); } }, 'Contribute to the guide'),
           h('button', { class: 'btn-md btn-md--outline', type: 'button', onclick: function () { go('imprint'); } }, 'Imprint and licence'))),
       h('div', { class: 'cta-photo' },
         photo('docs/assets/field-market-phone.jpg', 'A market trader in Ghana on a phone call at her stall')));
@@ -1076,9 +1079,16 @@
         page.kind === 'section' ? 'Section ' + page.n + ' · ' + page.tag : (page.tag || '')),
       h('div', { class: 'article-head' },
         h('h1', null, headingTitle),
-        h('button', { class: 'copy-btn', type: 'button', onclick: function () { copyPage(page); } },
-          icon('ph ph-copy'),
-          h('span', null, state.copied ? 'Copied' : 'Copy page'))),
+        h('div', { class: 'article-actions' },
+          h('a', {
+            class: 'copy-btn',
+            href: 'https://github.com/joekay-kiipo/os-guide-site/edit/main/docs/' + page.file,
+            target: '_blank',
+            rel: 'noreferrer'
+          }, icon('ph-duotone ph-pencil-simple'), h('span', null, 'Edit this page')),
+          h('button', { class: 'copy-btn', type: 'button', onclick: function () { copyPage(page); } },
+            icon('ph ph-copy'),
+            h('span', null, state.copied ? 'Copied' : 'Copy page')))),
       desc ? h('p', { class: 'article-desc' }, desc) : null,
       h('div', { class: 'doc' }, body),
       h('div', { class: 'pager' },

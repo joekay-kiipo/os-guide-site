@@ -380,7 +380,7 @@ h1, h2, h3, h4,
 .nav-sub {
   display: flex;
   align-items: flex-start;
-  gap: 0;
+  gap: 5px;
   width: 100%;
   padding: 6px 8px;
   border: none;
@@ -398,6 +398,15 @@ h1, h2, h3, h4,
 .nav-sub:hover { background: var(--activeBg); color: var(--accent); transform: translateX(2px); }
 .nav-sub.is-active { background: var(--activeBg); color: var(--accent); font-weight: 600; }
 .nav-sub.is-active:hover { transform: none; }
+.nav-sub .num {
+  flex-shrink: 0;
+  width: 12px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.35;
+  opacity: 1;
+}
 .nav-sub span:last-child { line-height: 1.35; }
 :root[data-theme="light"] .nav-item:not(.is-active),
 :root[data-theme="light"] .nav-sub:not(.is-active) { color: #000000; }
@@ -1122,6 +1131,7 @@ h1, h2, h3, h4,
 }
 .article-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
 .article h1 { margin: 0; font-size: 40px; font-weight: 650; letter-spacing: -0.03em; line-height: 1.12; }
+.article-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 
 .copy-btn {
   display: flex;
@@ -1138,6 +1148,7 @@ h1, h2, h3, h4,
   cursor: pointer;
   flex-shrink: 0;
   margin-top: 6px;
+  text-decoration: none;
 }
 .copy-btn:hover { color: var(--text); border-color: var(--faint); }
 .copy-btn i { font-size: 14px; line-height: 1; }
@@ -1629,6 +1640,7 @@ h1, h2, h3, h4,
   .flow-arrow { transform: rotate(90deg); height: 14px; }
   .article h1 { font-size: 30px; }
   .article-head { flex-direction: column; gap: 12px; }
+  .article-actions { flex-wrap: wrap; }
   .copy-btn { margin-top: 0; }
   .pager { grid-template-columns: 1fr; }
   .pager-btn--next { text-align: left; }

@@ -1,0 +1,59 @@
+name: Share field evidence or a case study
+description: Propose documented evidence that confirms, challenges, or extends OS Guide.
+title: "Field evidence: "
+labels:
+  - field-evidence
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Contributions may confirm or contradict the guide. Context and limitations matter more than presenting a universal conclusion. Do not include personal or identifying participant information.
+  - type: input
+    id: contributor
+    attributes:
+      label: Contributor or organization
+      description: Say how you would like to be credited. You may request public anonymity.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Describe the country or region, product type, user group, and relevant dates.
+    validations:
+      required: true
+  - type: textarea
+    id: method
+    attributes:
+      label: How was the evidence gathered?
+      description: Summarize the field activity, sample, research method, and conditions.
+    validations:
+      required: true
+  - type: textarea
+    id: findings
+    attributes:
+      label: Findings
+      description: Explain what you observed and whether it confirms, challenges, or extends a specific part of the guide.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Supporting material
+      description: Link to reports, anonymized notes, data, screenshots, or other material you are permitted to share.
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limitations
+      description: Explain what this evidence cannot establish or where it may not transfer.
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Rights and privacy
+      options:
+        - label: I am permitted to share this material under CC BY 4.0.
+          required: true
+        - label: The submission contains no private or identifying participant information.
+          required: true

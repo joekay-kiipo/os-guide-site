@@ -21,7 +21,7 @@
 | Linda Rheinberger | GIZ Ghana |
 | Constant Yao Agbley | GIZ Ghana |
 | Benedict Dibkuu | GIZ Ghana |
-| Stephanie Boanya-Mensah | GIZ GH |
+| Stephanie Boanya-Mensah | GIZ Ghana |
 
 ## Licence
 
